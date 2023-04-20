@@ -21,22 +21,29 @@ class SecretSauceTest(unittest.TestCase):
         # Test 1 - Login without login and password
         self.assertEqual(self.login("", ""), "Epic sadface: Username is required")
         # Test 2 - Login with incorrect username and without password
-        self.assertEqual(self.login("wrong_user", ""), "Epic sadface: Password is required")
+        self.assertEqual(self.login("wrong_user", ""),
+                         "Epic sadface: Password is required")
         # Test 3 - Login with incorrect username and incorrect password
-        self.assertEqual(self.login("wrong_user", "wrong_password"), "Epic sadface: Username and password do not "
-                                                                     "match any user in this service")
+        self.assertEqual(self.login("wrong_user", "wrong_password"),
+                         "Epic sadface: Username and password do not "
+                         "match any user in this service")
         # Test 4 - Login without username and incorrect password
-        self.assertEqual(self.login("", "wrong_password"), "Epic sadface: Username is required")
+        self.assertEqual(self.login("", "wrong_password"),
+                         "Epic sadface: Username is required")
         # Test 5 - Login with correct username and without password
-        self.assertEqual(self.login("standard_user", ""), "Epic sadface: Password is required")
+        self.assertEqual(self.login("standard_user", ""),
+                         "Epic sadface: Password is required")
         # Test 6 - Login with correct username and wrong password
-        self.assertEqual(self.login("standard_user", "wrong_password"), "Epic sadface: Username and password do not "
-                                                                        "match any user in this service")
+        self.assertEqual(self.login("standard_user", "wrong_password"),
+                         "Epic sadface: Username and password do not "
+                         "match any user in this service")
         # Test 7 - Login with incorrect username and correct password
-        self.assertEqual(self.login("wrong_user", "secret_sauce"), "Epic sadface: Username and password do not match "
-                                                                   "any user in this service")
+        self.assertEqual(self.login("wrong_user", "secret_sauce"),
+                         "Epic sadface: Username and password do not match "
+                         "any user in this service")
         # Test 8 - Login with correct username and correct password
-        self.assertEqual(self.login("standard_user", "secret_sauce"), "Login was successful")
+        self.assertEqual(self.login("standard_user", "secret_sauce"),
+                         "Login was successful")
 
     def test_scenario3(self):
         self.load_site()
@@ -45,7 +52,6 @@ class SecretSauceTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
-
 
     def load_site(self):
         driver = self.driver
