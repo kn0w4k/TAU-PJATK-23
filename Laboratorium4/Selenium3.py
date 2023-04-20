@@ -3,13 +3,12 @@ import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 
 
 class SecretSauceTest(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
-        self.driver = webdriver.Chrome()
+        # self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Chrome()
         self.driver = webdriver.Edge()
 
     def test_scenario1(self):
@@ -36,7 +35,7 @@ class SecretSauceTest(unittest.TestCase):
                          "Epic sadface: Password is required")
         # Test 6 - Login with correct username and wrong password
         self.assertEqual(self.login("standard_user", "wrong_password"),
-                         "Epic sadface: Username and password do not "
+                         "Epic sadface: Username is required"
                          "match any user in this service")
         # Test 7 - Login with incorrect username and correct password
         self.assertEqual(self.login("wrong_user", "secret_sauce"),
